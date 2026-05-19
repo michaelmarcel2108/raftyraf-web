@@ -3,17 +3,33 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: #0a0a0a;
+    background-color: #0d0d0d;
     color: #ffffff;
     line-height: 1.6;
     overflow-x: hidden;
+    position: relative;
 }
+
+/* Efek tekstur Halftone / Vintage Grunge Overlay */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background-image: radial-gradient(#666 1px, transparent 1px);
+    background-size: 4px 4px;
+    opacity: 0.12;
+    pointer-events: none;
+    z-index: 9999;
+}
+
 a {
     text-decoration: none;
     color: inherit;
 }
+
 section {
     padding: 80px 20px;
     width: 100%;
@@ -21,6 +37,7 @@ section {
     flex-direction: column;
     align-items: center;
 }
+
 h2 {
     font-size: 2.5rem;
     margin-bottom: 30px;
@@ -28,25 +45,46 @@ h2 {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 2px;
+    color: #eadd54; 
 }
 
 /* --- 1. HERO SECTION --- */
 #hero {
     height: 100vh;
     justify-content: center;
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url('./assets/foto-hero.jpg') center/cover no-repeat;
+    background: linear-gradient(rgba(10, 10, 10, 0.4), rgba(10, 10, 10, 0.8)), url('./assets/foto-hero.jpg') center/cover no-repeat; 
     text-align: center;
     padding: 0 20px;
+}
+
+.hero-text-container {
+    margin-top: 150px;
+    margin-bottom: 50px;
+    z-index: 2;
+}
+
+.hero-title {
+    font-size: 4rem;
+    letter-spacing: 10px;
+    margin-bottom: 10px;
+    color: #eadd54;
+    text-shadow: 2px 2px 10px rgba(234, 221, 84, 0.4);
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    letter-spacing: 4px;
+    color: #aaaaaa;
 }
 
 .spotify-container {
     width: 100%;
     max-width: 400px;
     margin: 0 auto;
-    margin-top: 460px;
+    z-index: 2;
 }
 
-/* --- 2. STREAMING SECTION (NEW WIDGET LAYOUT) --- */
+/* --- 2. STREAMING SECTION --- */
 #stream {
     background-color: #0f0f0f; 
     text-align: center;
@@ -87,7 +125,6 @@ h2 {
     border: none;
 }
 
-/* --- OPASITAS UNTUK EMBED MUSIC PLAYER --- */
 .spotify-container iframe,
 .embed-item iframe {
     opacity: 0.7; 
@@ -100,7 +137,7 @@ h2 {
 
 /* --- 3. ABOUT SECTION --- */
 #about {
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('./assets/foto-perform.jpg') center/cover no-repeat;
+    background: linear-gradient(rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 0.8)), url('./assets/foto-perform.jpg') center/cover no-repeat;
     padding: 120px 20px; 
     display: flex;
     justify-content: center;
@@ -112,47 +149,110 @@ h2 {
     text-align: center; 
 }
 .about-text p {
-    font-size: 1rem;
+    font-size: 1.05rem;
     color: #dddddd;
     line-height: 1.8;
 }
 
-/* --- 4. MEMBERS PROFILE --- */
+/* --- 4. LYRICS SECTION --- */
+#lyrics {
+    background-color: #0b0b0b;
+    border-bottom: 1px solid #1a1a1a;
+    padding: 100px 20px;
+}
+.lyrics-container {
+    display: flex;
+    width: 100%;
+    max-width: 1100px;
+    gap: 50px;
+    align-items: flex-start;
+}
+.lyrics-artwork {
+    flex: 1;
+    position: sticky;
+    top: 40px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.lyrics-artwork iframe {
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 16 / 9; 
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.7), 0 0 15px rgba(234, 221, 84, 0.2);
+    border: 1px solid #222;
+}
+
+.lyrics-content-box {
+    flex: 1;
+    background-color: rgba(20, 20, 20, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    width: 100%;
+}
+.lyrics-content-box h2 {
+    text-align: left;
+    font-size: 1.2rem;
+    letter-spacing: 4px;
+    margin-bottom: 5px;
+    color: #aaaaaa;
+}
+.lyrics-content-box h3 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #eadd54;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+}
+.lyrics-text p {
+    font-size: 1.05rem;
+    color: #e0e0e0;
+    line-height: 2;
+    margin-bottom: 25px;
+    letter-spacing: 0.5px;
+}
+
+/* --- 5. MEMBERS PROFILE (FULL HEIGHT WITH BOTTOM BOX) --- */
 #members {
     width: 100%;
-    background: linear-gradient(to bottom, #1a1a1a, #050505);
+    min-height: 100vh;
+    background: linear-gradient(rgba(10, 10, 10, 0.3), rgba(10, 10, 10, 0.7)), url('./assets/foto-group.jpg') center/cover no-repeat;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 100px 20px;
+    justify-content: space-between;
+    padding: 80px 20px 40px 20px; 
 }
 
 .follow-container {
     text-align: center;
-    margin-bottom: 60px;
+    margin-top: 20px;
 }
 .follow-container h2 {
-    font-size: 1.8rem;
-    letter-spacing: 4px;
-    margin-bottom: 20px;
+    font-size: 1.2rem;
+    letter-spacing: 10px;
+    margin-bottom: 15px;
     color: #ffffff;
     text-transform: uppercase;
 }
 .social-icons {
     display: flex;
-    gap: 20px;
+    gap: 15px;
     justify-content: center;
 }
 .social-icons a {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     background-color: #111111;
     color: #ffffff;
     border-radius: 50%;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     transition: transform 0.3s ease, background-color 0.3s;
     text-decoration: none;
     box-shadow: 0 4px 10px rgba(0,0,0,0.5);
@@ -161,78 +261,81 @@ h2 {
 .social-icons a:hover {
     transform: scale(1.1);
     background-color: #333333;
+    color: #eadd54;
 }
 
-/* Styling 5 Kolom Anggota Band */
-.members-row {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
+/* BOX KAPSUL DI BAGIAN BAWAH */
+.member-bottom-bar {
     width: 100%;
     max-width: 1200px;
+    background-color: rgba(15, 15, 15, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 50px; 
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 40px 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
 }
-.member-card {
-    flex: 1 1 180px; 
-    max-width: 220px;
+
+.member-item {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    gap: 5px;
 }
-.member-card img {
-    width: 100%;
-    aspect-ratio: 3/4; 
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    transition: transform 0.3s ease, filter 0.3s ease;
-    filter: brightness(0.6);
-}
-.member-card img:hover {
-    transform: translateY(-5px);
-    filter: brightness(0.7); 
-}
-.member-name {
+
+.member-box-name {
     font-weight: 700; 
     font-size: 1.1rem;
     color: #ffffff;
-    margin-bottom: 5px;
-    text-transform: uppercase;
+    letter-spacing: 1px;
 }
-.member-role {
+.member-box-role {
     font-weight: 300; 
     font-size: 0.9rem;
     color: #aaaaaa;
     letter-spacing: 1px;
 }
 
-/* --- 5. CONTACT SECTION --- */
+/* --- 6. CONTACT SECTION --- */
 #contact {
-    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url('./assets/bg-contact.jpg');
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.5)), url('./assets/bg-contact.jpg');
     background-position: left center;
     background-size: cover;
     background-repeat: no-repeat;
     padding: 120px 20px;
 }
+
+.contact-info {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    color: #dfdfdf;
+}
+
 .wa-btn {
-    background-color:#414141;
-    color: white;
+    background-color: #eadd54;
+    color: #0a0a0a;
     padding: 15px 45px;
     font-size: 1.2rem;
     font-weight: bold;
-    border-radius: 20px;
+    border-radius: 30px;
     display: flex;
     align-items: center;
-    gap: 5px;
-    transition: transform 0.3s ease;
+    gap: 10px;
+    transition: transform 0.3s ease, background-color 0.3s;
+    border: 2px solid #eadd54;
 }
 .wa-btn:hover {
     transform: scale(1.05);
+    background-color: transparent;
+    color: #eadd54;
 }
 
-/* --- 6. FOOTER --- */
+/* --- 7. FOOTER --- */
 footer {
     background-color: #000000;
     text-align: center;
@@ -245,23 +348,68 @@ footer {
 /* --- RESPONSIVE DESIGN (MOBILE) --- */
 @media (max-width: 768px) {
     #hero {
-        /* Menggunakan 'top center' agar bagian atas gambar pahlawan tidak terpotong */
-        background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url('./assets/foto-hero-mobile.jpg') top center/cover no-repeat;
+        background: linear-gradient(rgba(10, 10, 10, 0.4), rgba(10, 10, 10, 0.8)), url('./assets/foto-group-v.jpg') top center/cover no-repeat;
     }
     
     #about {
-        background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('./assets/bg-about-mobile.jpg') center/cover no-repeat;
+        background: linear-gradient(rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 0.8)), url('./assets/bg-about-mobile.jpg') center/cover no-repeat;
+    }
+
+    #lyrics {
+        padding: 60px 15px;
+    }
+    .lyrics-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .lyrics-artwork {
+        position: relative;
+        top: 0;
+    }
+    .lyrics-content-box {
+        padding: 25px 20px;
+    }
+    .lyrics-content-box h3 {
+        font-size: 1.8rem;
+    }
+
+    #members {
+        background: linear-gradient(rgba(10, 10, 10, 0.4), rgba(10, 10, 10, 0.8)), url('./assets/foto-hero-mobile.jpg') top center/cover no-repeat;
+        justify-content: space-between; 
+        padding-bottom: 20px;
+    }
+    
+    /* MEMBER BOX TETAP HORIZONTAL DI MOBILE */
+    .member-bottom-bar {
+        flex-direction: row; 
+        flex-wrap: nowrap;
+        border-radius: 20px;
+        padding: 15px 5px;
+        gap: 2px;
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .member-item {
+        gap: 2px;
+    }
+    
+    /* UKURAN FONT DIKECILKAN AGAR MUAT HORIZONTAL */
+    .member-box-name {
+        font-size: 0.65rem; 
+        letter-spacing: 0;
+    }
+    .member-box-role {
+        font-size: 0.55rem; 
+        letter-spacing: 0;
     }
     
     #contact {
         background-position: 20% center;
     }
-    
-    .hero-title { font-size: 2.5rem; }
+
+    .hero-title { font-size: 2.8rem; }
     h2 { font-size: 2rem; }
     .stream-title { font-size: 1.1rem; letter-spacing: 3px; }
     .embed-item { max-width: 100%; flex: 1 1 100%; }
-    .follow-container h2 { font-size: 1.3rem; letter-spacing: 2px; }
-    .social-icons a { width: 45px; height: 45px; font-size: 1.2rem; }
-    .member-card { flex: 1 1 45%; max-width: 45%; } 
 }
