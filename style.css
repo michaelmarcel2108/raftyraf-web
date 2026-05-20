@@ -262,6 +262,13 @@ h2 {
     letter-spacing: 0.5px;
 }
 
+#lyrics {
+    /* Mengganti warna polos dengan gambar space dan hiasan roket/satelit */
+    background: linear-gradient(rgba(11, 11, 11, 0.7), rgba(11, 11, 11, 0.85)), url('./assets/bg-lyrics.jpg') center top/cover no-repeat;
+    border-bottom: 1px solid #1a1a1a;
+    padding: 100px 20px;
+}
+
 /* --- 5. MEMBERS PROFILE (FULL HEIGHT WITH BOTTOM BOX) --- */
 #members {
     width: 100%;
