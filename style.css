@@ -52,7 +52,7 @@ h2 {
 #hero {
     height: 100vh;
     justify-content: center;
-    background: linear-gradient(rgba(10, 10, 10, 0.4), rgba(10, 10, 10, 0.8)), url('./assets/foto-hero.jpg') center/cover no-repeat; 
+    background: linear-gradient(rgba(10, 10, 10, 0.4), rgba(10, 10, 10, 0.8)), url('./assets/foto-group.jpg') center/cover no-repeat; 
     text-align: center;
     padding: 0 20px;
 }
@@ -107,7 +107,7 @@ h2 {
 }
 
 .embed-item {
-    width: 265px;       /* DINAIKKAN dari 230px biar Spotify gak kesempitan */
+    width: 265px;
     height: 360px; 
     border-radius: 12px;
     overflow: hidden;
@@ -429,32 +429,30 @@ footer {
     #members {
         background: linear-gradient(rgba(10, 10, 10, 0.4), rgba(10, 10, 10, 0.8)), url('./assets/foto-group-v.jpg') top center/cover no-repeat;
         justify-content: space-between; 
-        padding-bottom: 20px;
+        padding-bottom: 60px;
     }
 
     .about-members-list {
         display: flex;
-        flex-direction: column; /* Jaga agar tetap vertikal */
-        gap: 10px; /* UBAH nilai ini (misal 1rem atau 10px) agar jarak atas-bawah rapat */
-        align-items: center; /* Jaga agar member tetap di tengah */
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
     }
     
-    /* MEMBER BOX TETAP HORIZONTAL DI MOBILE */
     .member-bottom-bar {
         flex-direction: row; 
         flex-wrap: nowrap;
         border-radius: 20px;
-        padding: 15px 5px;
-        gap: 2px;
+        padding: 15px 20px;
+        gap: 10px;
         width: 100%;
-        justify-content: space-between;
+        justify-content: space-evenly;
     }
     
     .member-item {
         gap: 2px;
     }
-    
-    /* UKURAN FONT DIKECILKAN AGAR MUAT HORIZONTAL */
+
     .member-box-name {
         font-size: 0.65rem; 
         letter-spacing: 0;
