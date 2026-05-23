@@ -3,17 +3,51 @@
     padding: 0;
     box-sizing: border-box;
 }
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+    overflow-x: hidden;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(13, 13, 13, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 10000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 20px 0;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+}
+
+.nav-links a {
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #ffffff;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #eadd54;
+}
 
 body {
     font-family: 'Montserrat', sans-serif;
     background-color: #0d0d0d;
     color: #ffffff;
     line-height: 1.6;
-    overflow-x: hidden;
     position: relative;
 }
 
-/* Efek tekstur Halftone / Vintage Grunge Overlay */
 body::after {
     content: "";
     position: fixed;
@@ -138,7 +172,6 @@ h2 {
     opacity: 1; 
 }
 
-/* Custom Card untuk Apple Music biar seragam */
 .apple-custom-card {
     background-image: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 100%), url('./assets/artwork.png');
     background-size: cover;
@@ -155,7 +188,7 @@ h2 {
     bottom: 15px;
     right: 15px;
     font-weight: 700;
-    color: #FA243C; /* Warna Merah Khas Apple Music */
+    color: #FA243C;
     font-size: 0.9rem;
     letter-spacing: 1px;
 }
@@ -398,8 +431,20 @@ footer {
     border-top: 1px solid #222;
 }
 
-/* --- RESPONSIVE DESIGN (MOBILE) --- */
+/* Mobile */
 @media (max-width: 768px) {
+
+    .navbar {
+        padding: 15px 0;
+    }
+    .nav-links {
+        gap: 15px;
+    }
+    .nav-links a {
+        font-size: 0.75rem;
+        letter-spacing: 1px;
+    }
+
     #hero {
         background: linear-gradient(rgba(10, 10, 10, 0.4), rgba(10, 10, 10, 0.8)), url('./assets/foto-group-v.jpg') top center/cover no-repeat;
     }
